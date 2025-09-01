@@ -1,0 +1,24 @@
+{
+  "name": "workshops",
+  "version": "1.0.0",
+  "description": "## Backend",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:spa\" \"npm run dev:backend\"",
+    "dev:spa": "cd spa && npm run start",
+    "dev:backend": "cd backend && npm run start:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patrykomiotek/info-mf.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patrykomiotek/info-mf/issues"
+  },
+  "homepage": "https://github.com/patrykomiotek/info-mf#readme",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

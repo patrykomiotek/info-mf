@@ -14,9 +14,9 @@ import { FlightsService } from './flights.service';
       <h2 class="text-2xl font-bold">Flight Details</h2>
       @if (flight) {
       <div>
-        <p><strong>ID:</strong> {{ flight?.id }}</p>
-        <p><strong>Name:</strong> {{ flight?.name }}</p>
-        <p><strong>Description:</strong> {{ flight?.description }}</p>
+        <p><strong>ID:</strong> {{ flight.id }}</p>
+        <p><strong>Name:</strong> {{ flight.name }}</p>
+        <p><strong>Description:</strong> {{ flight.description }}</p>
         <a [routerLink]="['/flights']" class="text-blue-500">Back to flights</a>
       </div>
       } @else {
