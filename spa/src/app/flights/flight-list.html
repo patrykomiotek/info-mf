@@ -5,6 +5,7 @@
     <div class="border border-gray-300 rounded-md p-2 space-y-2">
       <h3 class="text-lg font-bold">{{ flight.name }}</h3>
       <p class="text-sm text-gray-500">{{ flight.description }}</p>
+      <a [routerLink]="['/flights', flight.id]" class="text-blue-500">View Details</a>
     </div>
   }
   </div>
