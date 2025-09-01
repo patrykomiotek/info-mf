@@ -13,6 +13,11 @@ export const routes: Routes = [
     title: 'Home Page',
   },
   {
+    path: 'login',
+    loadComponent: () => import('./login/login-page.component').then((m) => m.LoginPageComponent),
+    title: 'Login Page',
+  },
+  {
     path: 'admin',
     component: AdminPage,
     title: 'Admin Page',
