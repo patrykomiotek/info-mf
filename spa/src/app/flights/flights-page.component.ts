@@ -4,11 +4,7 @@ import { FlightsListComponent } from './flights-list.component';
 @Component({
   selector: 'flights-page',
   standalone: true,
-  template: `<div>
-    <h1>Flights</h1>
-    <p>Welcome to the flights page</p>
-    <flights-list />
-  </div> `,
+  templateUrl: './flights-page.html',
   imports: [FlightsListComponent],
 })
 export class FlightsPageComponent {}
