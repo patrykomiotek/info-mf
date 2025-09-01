@@ -1,22 +1,21 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 import { Flight } from './dtos/Flight.dto';
+import { API_BASE_URL } from '../consts';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FlightsService {
-  private flights: Flight[] = [
-    { id: 1, name: 'Flight 1', description: 'First flight description' },
-    { id: 2, name: 'Flight 2', description: 'Second flight description' },
-  ];
+  private http = inject(HttpClient);
 
-  constructor() {}
-
-  getFlights(): Flight[] {
-    return this.flights;
+  getFlights(): Observable<Flight[]> {
+    return this.http.get<Flight[]>(`${API_BASE_URL}/flights`);
   }
 
-  getFlightById(id: number): Flight | undefined {
-    return this.flights.find((flight) => flight.id === id);
+  getFlightById(id: number): Observable<Flight | undefined> {
+    return this.http.get<Flight>(`${API_BASE_URL}/flights/${id}`);
   }
 }

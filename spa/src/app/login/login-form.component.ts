@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -32,7 +32,8 @@ import { LoginService } from './login.service';
   `,
 })
 export class LoginFormComponent {
-  constructor(private loginService: LoginService, private router: Router) {}
+  private loginService = inject(LoginService);
+  private router = inject(Router);
 
   username = '';
   password = '';

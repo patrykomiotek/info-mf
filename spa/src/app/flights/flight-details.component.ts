@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -26,14 +26,23 @@ import { FlightsService } from './flights.service';
   `,
 })
 export class FlightDetailsComponent implements OnInit {
-  flight: Flight | undefined = undefined;
+  private flightsService = inject(FlightsService);
+  private route = inject(ActivatedRoute);
 
-  constructor(private flightsService: FlightsService, private route: ActivatedRoute) {}
+  flight: Flight | undefined = undefined;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
       const flightId = +params['id'];
-      this.flight = this.flightsService.getFlightById(flightId);
+      this.flightsService.getFlightById(flightId).subscribe({
+        next: (flight) => {
+          this.flight = flight;
+        },
+        error: (error) => {
+          console.error('Error fetching flight:', error);
+          this.flight = undefined;
+        },
+      });
     });
   }
 }
