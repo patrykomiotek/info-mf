@@ -1,9 +1,10 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, effect, inject, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
-import { Flight } from './dtos/Flight.dto';
 import { FlightsService } from './flights.service';
+import { Flight } from './dtos/Flight.dto';
 
 @Component({
   selector: 'flight-details',
@@ -12,11 +13,11 @@ import { FlightsService } from './flights.service';
   template: `
     <div>
       <h2 class="text-2xl font-bold">Flight Details</h2>
-      @if (flight) {
+      @if (flight$ | async; as flightData) {
       <div>
-        <p><strong>ID:</strong> {{ flight.id }}</p>
-        <p><strong>Name:</strong> {{ flight.name }}</p>
-        <p><strong>Description:</strong> {{ flight.description }}</p>
+        <p><strong>ID:</strong> {{ flightData.id }}</p>
+        <p><strong>Name:</strong> {{ flightData.name }}</p>
+        <p><strong>Description:</strong> {{ flightData.description }}</p>
         <a [routerLink]="['/flights']" class="text-blue-500">Back to flights</a>
       </div>
       } @else {
@@ -25,24 +26,16 @@ import { FlightsService } from './flights.service';
     </div>
   `,
 })
-export class FlightDetailsComponent implements OnInit {
+export class FlightDetailsComponent {
   private flightsService = inject(FlightsService);
-  private route = inject(ActivatedRoute);
+  @Input() flightId!: number;
+  flight$!: Observable<Flight | undefined>;
 
-  flight: Flight | undefined = undefined;
-
-  ngOnInit() {
-    this.route.params.subscribe((params) => {
-      const flightId = +params['id'];
-      this.flightsService.getFlightById(flightId).subscribe({
-        next: (flight) => {
-          this.flight = flight;
-        },
-        error: (error) => {
-          console.error('Error fetching flight:', error);
-          this.flight = undefined;
-        },
-      });
+  constructor() {
+    effect(() => {
+      if (this.flightId) {
+        this.flight$ = this.flightsService.getFlightById(this.flightId);
+      }
     });
   }
 }

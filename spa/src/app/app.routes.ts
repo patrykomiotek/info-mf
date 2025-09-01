@@ -24,7 +24,7 @@ export const routes: Routes = [
     title: 'Flights Page',
   },
   {
-    path: 'flights/:id',
+    path: 'flights/:flightId',
     loadComponent: () =>
       import('./flights/flight-details.component').then((m) => m.FlightDetailsComponent),
     title: 'Flight Details',
