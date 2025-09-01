@@ -1,8 +1,18 @@
 import { Component } from '@angular/core';
+import { FlightsService } from './flights.service';
+import { Flight } from './dtos/Flight.dto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'flights-list',
   standalone: true,
-  template: ` <h2 class="text-2xl font-bold">Flights List</h2> `,
+  imports: [CommonModule],
+  templateUrl: './flight-list.html',
 })
-export class FlightsListComponent {}
+export class FlightsListComponent {
+  flights: Flight[] = [];
+
+  constructor(private flightsService: FlightsService) {
+    this.flights = this.flightsService.getFlights();
+  }
+}
