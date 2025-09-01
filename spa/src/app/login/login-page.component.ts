@@ -5,8 +5,8 @@ import { LoginFormComponent } from './login-form.component';
   selector: 'login-page',
   standalone: true,
   template: `
-    <div>
-      <h1>Login Page</h1>
+    <div class="space-y-4">
+      <h1 class="text-3xl font-bold">Login Page</h1>
       <login-form />
     </div>
   `,

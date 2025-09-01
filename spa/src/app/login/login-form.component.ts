@@ -10,11 +10,25 @@ import { LoginService } from './login.service';
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-    <form (ngSubmit)="login()">
-      <input type="text" name="username" [(ngModel)]="username" placeholder="Username" />
-      <input type="password" name="password" [(ngModel)]="password" placeholder="Password" />
-      <button type="submit">Login</button>
-    </form>
+    <div class="w-[400px]">
+      <form (ngSubmit)="login()" class="flex flex-col gap-2">
+        <input
+          type="text"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="Username"
+          class="border border-gray-300 rounded-md p-2"
+        />
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="Password"
+          class="border border-gray-300 rounded-md p-2"
+        />
+        <button type="submit" class="bg-blue-500 text-white rounded-md p-2">Login</button>
+      </form>
+    </div>
   `,
 })
 export class LoginFormComponent {
