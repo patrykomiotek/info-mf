@@ -18,6 +18,12 @@ export const routes: Routes = [
     title: 'Login Page',
   },
   {
+    path: 'flights',
+    loadComponent: () =>
+      import('./flights/flights-page.component').then((m) => m.FlightsPageComponent),
+    title: 'Flights Page',
+  },
+  {
     path: 'admin',
     component: AdminPage,
     title: 'Admin Page',
