@@ -10,6 +10,7 @@ import { CommonModule, NgComponentOutlet } from '@angular/common';
       <div class="left-side">
         <h1>Hello, {{ title() }} {{ name() }}</h1>
         <p>Congratulations! Your app is running. 🎉</p>
+        <p>This is the shell app</p>
 
         @if (infoCartComponent()) {
         <ng-container *ngComponentOutlet="infoCartComponent()"></ng-container>
