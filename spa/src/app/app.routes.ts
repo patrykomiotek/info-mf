@@ -34,4 +34,9 @@ export const routes: Routes = [
     component: AdminPage,
     title: 'Admin Page',
   },
+  {
+    path: 'cart',
+    loadComponent: () => import('./cart/cart-page.component').then((m) => m.CartPageComponent),
+    title: 'Cart Page',
+  },
 ];
