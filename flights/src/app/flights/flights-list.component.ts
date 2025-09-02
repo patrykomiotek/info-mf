@@ -1,0 +1,23 @@
+import { Component, effect, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { Observable } from 'rxjs';
+
+import { FlightsService } from './flights.service';
+import { Flight } from './dtos/Flight.dto';
+
+@Component({
+  selector: 'flights-list',
+  imports: [CommonModule, RouterLink],
+  templateUrl: './flight-list.html',
+})
+export class FlightsListComponent {
+  private flightsService = inject(FlightsService);
+  flights$!: Observable<Flight[]>;
+
+  constructor() {
+    effect(() => {
+      this.flights$ = this.flightsService.getFlights();
+    });
+  }
+}
