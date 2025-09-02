@@ -10,12 +10,12 @@ module.exports = {
       filename: '[name].[contenthash].css',
     }),
   ],
-
   ...withModuleFederationPlugin({
     name: 'cart', // cart/Component
 
     exposes: {
       './Home': './src/app/home/home-federation.module.ts',
+      './InfoCartComponent': './src/app/info-cart/info-cart.component.ts',
     },
 
     shared: share({
