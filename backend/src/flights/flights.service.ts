@@ -10,16 +10,19 @@ export class FlightsService {
       id: faker.number.int(),
       name: `${faker.location.city()} - ${faker.location.city()}`,
       description: faker.lorem.sentence(),
+      price: faker.number.int({ min: 10, max: 1000 }),
     },
     {
       id: faker.number.int(),
       name: `${faker.location.city()} - ${faker.location.city()}`,
       description: faker.lorem.sentence(),
+      price: faker.number.int({ min: 10, max: 1000 }),
     },
     {
       id: faker.number.int(),
       name: `${faker.location.city()} - ${faker.location.city()}`,
       description: faker.lorem.sentence(),
+      price: faker.number.int({ min: 10, max: 1000 }),
     },
   ];
 

@@ -18,6 +18,7 @@ import { Flight } from './dtos/Flight.dto';
         <p><strong>ID:</strong> {{ flightData.id }}</p>
         <p><strong>Name:</strong> {{ flightData.name }}</p>
         <p><strong>Description:</strong> {{ flightData.description }}</p>
+        <p><strong>Price:</strong> {{ flightData.price }} zł</p>
         <a [routerLink]="['/flights']" class="text-blue-500">Back to flights</a>
       </div>
       } @else {
