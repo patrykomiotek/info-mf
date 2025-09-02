@@ -1,2 +1,2 @@
 declare module 'flights/Module';
-declare module 'cart/Module';
+declare module 'cart/Home';

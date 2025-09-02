@@ -11,8 +11,8 @@ export const routes: Routes = [
     path: 'flights',
     loadChildren: () => import('flights/Module').then((m) => m.FlightsModule),
   },
-  // {
-  //   path: 'carts',
-  //   loadChildren: () => import('cart/Module').then((m) => m.CartModule),
-  // },
+  {
+    path: 'cart',
+    loadChildren: () => import('cart/Home').then((m) => m.HomeModule),
+  },
 ];

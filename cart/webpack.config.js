@@ -2,18 +2,27 @@ const {
   share,
   withModuleFederationPlugin,
 } = require('@angular-architects/module-federation/webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-module.exports = withModuleFederationPlugin({
-  name: 'cart', // card/Component
+module.exports = {
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
+  ],
 
-  exposes: {
-    './Component': './src/app/app.ts',
-  },
+  ...withModuleFederationPlugin({
+    name: 'cart', // cart/Component
 
-  shared: share({
-    '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-    '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-    '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-    '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+    exposes: {
+      './Home': './src/app/home/home-federation.module.ts',
+    },
+
+    shared: share({
+      '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      '@angular/common': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      '@angular/common/http': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+      '@angular/router': { singleton: true, strictVersion: true, requiredVersion: 'auto' },
+    }),
   }),
-});
+};
