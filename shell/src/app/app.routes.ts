@@ -34,4 +34,13 @@ export const routes: Routes = [
         exposedModule: './Home',
       }).then((m) => m.HomeModule),
   },
+  {
+    path: 'user',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'user',
+        exposedModule: './Module',
+      }).then((m) => m.UserModule),
+  },
 ];
