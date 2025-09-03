@@ -9,9 +9,8 @@
       <p class="text-sm text-gray-500">{{ flight.description }}</p>
       <p class="text-sm text-gray-500">{{ flight.price }} zł</p>
       <a [routerLink]="['/flights', flight.id]" class="text-blue-500">View Details</a>
-
+      <app-reserve-flight [flight]="flight" />
     </div>
     }
   </div>
 </div>
-

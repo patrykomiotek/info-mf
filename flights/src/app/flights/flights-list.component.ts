@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 
 import { FlightsService } from './flights.service';
 import { Flight } from './dtos/Flight.dto';
+import { ReserveFlightComponent } from './reserve-flight.component';
 
 @Component({
   selector: 'flights-list',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ReserveFlightComponent],
   templateUrl: './flight-list.html',
 })
 export class FlightsListComponent {
