@@ -12,10 +12,11 @@ module.exports = {
   ],
 
   ...withModuleFederationPlugin({
-    name: 'cart', // cart/Component
+    name: 'cart', // cart/Home
 
     exposes: {
       './Home': './src/app/home/home-federation.module.ts',
+      './CartInfo': './src/app/cart-info/cart-info.component.ts',
     },
 
     shared: share({
