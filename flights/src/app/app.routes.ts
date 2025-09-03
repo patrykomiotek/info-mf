@@ -13,8 +13,8 @@ export const routes: Routes = [
     path: 'search',
     component: FlightsSearchComponent,
   },
-  {
-    path: 'list',
-    component: FlightsListComponent,
-  },
+  // {
+  //   path: 'list',
+  //   component: FlightsListComponent,
+  // },
 ];
