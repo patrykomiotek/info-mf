@@ -5,10 +5,11 @@ import { Observable } from 'rxjs';
 
 import { FlightsService } from './flights.service';
 import { Flight } from './dtos/Flight.dto';
+import { ReserveFlightComponent } from './reserve-flight.component';
 
 @Component({
   selector: 'flight-details',
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, ReserveFlightComponent],
   template: `
     <div>
       <h2 class="text-2xl font-bold">Flight Details</h2>
@@ -18,7 +19,7 @@ import { Flight } from './dtos/Flight.dto';
         <p><strong>Name:</strong> {{ flightData.name }}</p>
         <p><strong>Description:</strong> {{ flightData.description }}</p>
         <p><strong>Price:</strong> {{ flightData.price }} zł</p>
-
+        <app-reserve-flight [flight]="flightData" />
         <a routerLink="/flights/list" class="text-blue-500">Back to flights</a>
       </div>
       } @else {
