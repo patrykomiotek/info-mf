@@ -54,4 +54,15 @@ export const routes: Routes = [
         .then((m) => m.UsersModule)
         .catch((err) => console.error(err)),
   },
+  {
+    path: 'test-page',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'user',
+        exposedModule: './LoginForm',
+      })
+        .then((m) => m.LoginForm)
+        .catch((err) => console.error(err)),
+  },
 ];
