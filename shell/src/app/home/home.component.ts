@@ -1,10 +1,11 @@
 import { CommonModule, NgComponentOutlet } from '@angular/common';
 import { Component, signal, Type } from '@angular/core';
+import { CartInfoComponent } from '../cart-info.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, NgComponentOutlet],
+  imports: [CommonModule, NgComponentOutlet, CartInfoComponent],
   template: `
     <div class="content">
       <div class="left-side">
@@ -49,6 +50,8 @@ import { Component, signal, Type } from '@angular/core';
 
         <h1>Hello, {{ title() }} {{ name() }}</h1>
         <p>Congratulations! Your app is running. 🎉</p>
+
+        <app-cart-info />
         @if (cartInfo()) {
         <ng-container *ngComponentOutlet="cartInfo()"></ng-container>
         } @else {
