@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -21,6 +22,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
   imports: [ReactiveFormsModule],
 })
 export class LoginFormComponent {
+  private readonly router = inject(Router);
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -33,7 +35,9 @@ export class LoginFormComponent {
   onSubmit() {
     if (this.loginForm.valid) {
       // Handle login logic here
-      console.log(this.loginForm.value);
+      console.log(this.loginForm.value, this.loginForm.value.userName);
+      window.parent.postMessage({ type: 'LOGIN', payload: this.loginForm.value.username }, '*');
+      this.router.navigate(['/']);
     }
   }
 }
