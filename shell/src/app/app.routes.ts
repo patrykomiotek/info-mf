@@ -19,7 +19,9 @@ export const routes: Routes = [
         type: 'manifest',
         remoteName: 'flights',
         exposedModule: './Module',
-      }).then((m) => m.FlightsModule),
+      })
+        .then((m) => m.FlightsModule)
+        .catch((err) => console.error(err)),
   },
   // {
   //   path: 'cart',
@@ -32,6 +34,19 @@ export const routes: Routes = [
         type: 'manifest',
         remoteName: 'cart',
         exposedModule: './Home',
-      }).then((m) => m.HomeModule),
+      })
+        .then((m) => m.HomeModule)
+        .catch((err) => console.error(err)),
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'users',
+        exposedModule: './Users',
+      })
+        .then((m) => m.UsersModule)
+        .catch((err) => console.error(err)),
   },
 ];
