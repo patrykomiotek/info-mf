@@ -4,10 +4,9 @@ const {
 } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
-  name: 'users',
+  name: 'user',
 
   exposes: {
-    './LoginPage': './src/app/login/login-page.component.ts',
     './LoginForm': './src/app/login/login-form.component.ts',
   },
 

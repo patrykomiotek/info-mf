@@ -28,7 +28,7 @@ export class LoginPageComponent {
       const component = await import('user/LoginForm');
       this.loginForm.set(component.LoginFormComponent);
     } catch (error) {
-      console.error('Error loading cart info component', error);
+      console.error('Error loading LoginForm component', error);
     }
   }
 }
