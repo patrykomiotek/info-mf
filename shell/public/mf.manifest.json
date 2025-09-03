@@ -1,9 +1,5 @@
 {
   "flights": "http://localhost:4203/remoteEntry.js",
   "cart": "http://localhost:4204/remoteEntry.js",
-  "user": {
-    "remoteEntry": "http://localhost:4205/remoteEntry.js",
-    "remoteName": "user",
-    "exposedModule": "./LoginForm"
-  }
+  "user": "http://localhost:4205/remoteEntry.js"
 }
