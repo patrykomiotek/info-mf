@@ -7,7 +7,8 @@ module.exports = withModuleFederationPlugin({
   name: 'users',
 
   exposes: {
-    './Users': './src/app/app.ts',
+    './LoginPage': './src/app/login/login-page.component.ts',
+    './LoginForm': './src/app/login/login-form.component.ts',
   },
 
   shared: share({

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { HomeComponent } from './home/home.component';
+import { LoginPageComponent } from './login-page/login.page.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
       })
         .then((m) => m.HomeModule)
         .catch((err) => console.error(err)),
+  },
+  {
+    path: 'users',
+    component: LoginPageComponent,
   },
   {
     path: 'users',

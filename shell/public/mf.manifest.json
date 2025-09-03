@@ -1,5 +1,5 @@
 {
   "flights": "http://localhost:4203/remoteEntry.js",
   "cart": "http://localhost:4204/remoteEntry.js",
-  "users": "http://localhost:4204/remoteEntry.js"
+  "user": "http://localhost:4204/remoteEntry.js"
 }
