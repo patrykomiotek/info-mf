@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
@@ -7,12 +9,30 @@ export const routes: Routes = [
     component: HomeComponent,
     pathMatch: 'full',
   },
+  // {
+  //   path: 'flights',
+  //   loadChildren: () => import('flights/Module').then((m) => m.FlightsModule),
+  // },
   {
     path: 'flights',
-    loadChildren: () => import('flights/Module').then((m) => m.FlightsModule),
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'flights',
+        exposedModule: './Module',
+      }).then((m) => m.FlightsModule),
   },
+  // {
+  //   path: 'cart',
+  //   loadChildren: () => import('cart/Home').then((m) => m.HomeModule),
+  // },
   {
     path: 'cart',
-    loadChildren: () => import('cart/Home').then((m) => m.HomeModule),
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+        remoteName: 'cart',
+        exposedModule: './Home',
+      }).then((m) => m.HomeModule),
   },
 ];

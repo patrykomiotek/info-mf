@@ -25,10 +25,10 @@ module.exports = {
   ],
 
   ...withModuleFederationPlugin({
-    remotes: {
-      flights: 'http://localhost:4203/remoteEntry.js',
-      cart: 'http://localhost:4204/remoteEntry.js',
-    },
+    // remotes: {
+    //   flights: 'http://localhost:4203/remoteEntry.js',
+    //   cart: 'http://localhost:4204/remoteEntry.js',
+    // },
 
     shared: share({
       '@angular/core': { singleton: true, strictVersion: true, requiredVersion: 'auto' },

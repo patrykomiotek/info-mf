@@ -1,4 +1,6 @@
 import { Routes } from '@angular/router';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+
 import { AdminPage } from './admin-page/admin-page.component';
 
 export const routes: Routes = [
@@ -12,10 +14,17 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.component').then((m) => m.HomeComponent),
     title: 'Home Page',
   },
+  // {
+  //   path: 'login',
+  //   loadComponent: () => import('./login/login-page.component').then((m) => m.LoginPageComponent),
+  //   title: 'Login Page',
+  // },
   {
     path: 'login',
-    loadComponent: () => import('./login/login-page.component').then((m) => m.LoginPageComponent),
-    title: 'Login Page',
+    loadChildren: () =>
+      loadRemoteModule({
+        type: 'manifest',
+      }),
   },
   {
     path: 'flights',
